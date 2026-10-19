@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10-Second Website Design Gut Check – Executive Summary</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --secondary: #0d9488;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --bg-page: #f9fafb;
+      --bg-card: #ffffff;
+      --border: #e5e7eb;
+      --success: #15803d;
+      --warning: #b45309;
+      --danger: #b91c1c;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .kpi-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .kpi-subtext {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.885rem;
+    }
+
+    th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    .rank-badge {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.8rem;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .rank-1 { background: #fef08a; color: #854d0e; }
+    .rank-2 { background: #e2e8f0; color: #475569; }
+    .rank-3 { background: #ffedd5; color: #9a3412; }
+
+    .score-pill {
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+
+    .score-high { background: #dcfce7; color: var(--success); }
+    .score-mid { background: #fef3c7; color: var(--warning); }
+    .score-low { background: #fee2e2; color: var(--danger); }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 1rem;
+      }
+    }
+
+    .takeaway-list {
+      list-style-type: none;
+    }
+
+    .takeaway-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.9rem;
+    }
+
+    .takeaway-positive li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .takeaway-negative li::before {
+      content: "✕";
+      position: absolute;
+      left: 0;
+      color: var(--danger);
+      font-weight: bold;
+    }
+
+    .theme-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      font-size: 0.875rem;
+    }
+
+    .bar-bg {
+      background: #f1f5f9;
+      height: 8px;
+      border-radius: 9999px;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 0.35rem;
+    }
+
+    .bar-fill {
+      background: var(--primary);
+      height: 100%;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>10-Second Website Design Gut Check</h1>
+      <p class="meta">Survey Insights & Analysis &bull; 19 Participants &bull; 10 Non-Profit & Brand Sites</p>
+    </header>
+
+    <!-- KPI Summary Row -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title">Highest Rated</div>
+        <div class="kpi-value">4.16 / 5</div>
+        <div class="kpi-subtext">Easterseals Midwest</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Runner Up</div>
+        <div class="kpi-value">3.95 / 5</div>
+        <div class="kpi-subtext">Special Olympics</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Benchmark Average</div>
+        <div class="kpi-value">3.23 / 5</div>
+        <div class="kpi-subtext">Overall average across all 10 sites</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Dominant Feedback Theme</div>
+        <div class="kpi-value">77.8%</div>
+        <div class="kpi-subtext">Visual Appeal & Layout</div>
+      </div>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <div class="section-card">
+      <h2>Website Rankings & Overall Performance</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 50px;">Rank</th>
+              <th>Organization / Website</th>
+              <th style="width: 110px;">Avg Score</th>
+              <th style="width: 110px;">5★ / 1★-2★</th>
+              <th>Key Strengths & Feedback Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rank-badge rank-1">1</span></td>
+              <td><strong>Easterseals Midwest</strong></td>
+              <td><span class="score-pill score-high">4.16 / 5.0</span></td>
+              <td>6 / 1</td>
+              <td>Soft rounded edges feel welcoming; interactive hover info; easy-to-follow layout with high clarity.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge rank-2">2</span></td>
+              <td><strong>Special Olympics</strong></td>
+              <td><span class="score-pill score-high">3.95 / 5.0</span></td>
+              <td>4 / 1</td>
+              <td>Dynamic image motion; prominent calendar/event schedules; authentic imagery creates instant connection.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge rank-3">3</span></td>
+              <td><strong>Variety StL</strong></td>
+              <td><span class="score-pill score-high">3.84 / 5.0</span></td>
+              <td>6 / 0</td>
+              <td>Zero low scores; strong emotional engagement with real photography; clean, eye-catching presentation.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">4</span></td>
+              <td><strong>Best Buddies</strong></td>
+              <td><span class="score-pill score-high">3.84 / 5.0</span></td>
+              <td>4 / 1</td>
+              <td>Warm color scheme and effective testimonials; some felt it was slightly dense with links and boxed sections.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">5</span></td>
+              <td><strong>Great Rivers Greenway</strong></td>
+              <td><span class="score-pill score-mid">3.63 / 5.0</span></td>
+              <td>4 / 3</td>
+              <td>Great mission visibility, event links, and hover highlights; plain white/colored backgrounds divided opinions.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">6</span></td>
+              <td><strong>Helpo Theme</strong></td>
+              <td><span class="score-pill score-mid">2.84 / 5.0</span></td>
+              <td>1 / 2</td>
+              <td>Good headline hierarchy and video integration, but penalized for multiple clashing styles on a single page.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">7</span></td>
+              <td><strong>Camp Barnabas</strong></td>
+              <td><span class="score-pill score-mid">2.74 / 5.0</span></td>
+              <td>1 / 2</td>
+              <td>Simple structure and readable facts; criticized for lack of color pop and imagery that felt generic or artificial.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">8</span></td>
+              <td><strong>Charity: Water</strong></td>
+              <td><span class="score-pill score-low">2.58 / 5.0</span></td>
+              <td>0 / 3</td>
+              <td>Clean visual aesthetic, but low font legibility and leading with an immediate donation prompt hurt initial impressions.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">9</span></td>
+              <td><strong>Achievements Unlimited</strong></td>
+              <td><span class="score-pill score-low">2.42 / 5.0</span></td>
+              <td>1 / 3</td>
+              <td>Clean look, but users reported ambiguity on where to navigate or what action to take next.</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">10</span></td>
+              <td><strong>Headspace</strong></td>
+              <td><span class="score-pill score-low">2.32 / 5.0</span></td>
+              <td>1 / 5</td>
+              <td>Emojis and cartoon characters felt too childish or polarizing, obscuring the primary mission during a fast scan.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Takeaways & Theme Breakdown -->
+    <div class="split-grid">
+      <!-- Qualitative Drivers -->
+      <div class="section-card">
+        <h2>Key Drivers of Success & Drop-Off</h2>
+        
+        <h3 style="font-size: 0.95rem; color: var(--success); margin: 0.75rem 0 0.5rem;">Positive Drivers (What Won 4s & 5s)</h3>
+        <ul class="takeaway-list takeaway-positive">
+          <li><strong>Authentic Photography:</strong> Real, relatable human faces consistently generated connection and high ratings.</li>
+          <li><strong>Micro-Interactions:</strong> Subtle hover states that expand info and subtle image movement were viewed as modern and premium.</li>
+          <li><strong>Clear Front-Page Structure:</strong> Prominent event calendars, direct program links, and mission statements above the fold anchored user orientation.</li>
+        </ul>
+
+        <h3 style="font-size: 0.95rem; color: var(--danger); margin: 1.25rem 0 0.5rem;">Friction Points (What Triggered 1s & 2s)</h3>
+        <ul class="takeaway-list takeaway-negative">
+          <li><strong>Cartoons & Emojis:</strong> Diminished credibility and made the sites appear informal or juvenile.</li>
+          <li><strong>Premature Donation Demands:</strong> Asking for money before establishing clear mission value repelled first-time visitors.</li>
+          <li><strong>Small Font & Low Contrast:</strong> Tight fonts and low-contrast palettes significantly impaired readability.</li>
+        </ul>
+      </div>
+
+      <!-- Feedback Distribution -->
+      <div class="section-card">
+        <h2>Feedback Theme Distribution</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Breakdown of qualitative notes tagged across the 10-second reviews:
+        </p>
+
+        <div style="margin-bottom: 1.25rem;">
+          <div class="theme-row">
+            <span><strong>Visual Appeal and Layout</strong></span>
+            <span><strong>77.8%</strong> (7 mentions)</span>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: 77.8%;"></div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <div class="theme-row">
+            <span><strong>Content and Readability</strong></span>
+            <span><strong>11.1%</strong> (1 mention)</span>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: 11.1%; background: var(--secondary);"></div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <div class="theme-row">
+            <span><strong>Imagery</strong></span>
+            <span><strong>11.1%</strong> (1 mention)</span>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: 11.1%; background: var(--warning);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+```
