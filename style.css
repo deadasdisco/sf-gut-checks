@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
 }
 
 :root {
     --container-width: 1200px;
     --section-padding: 5%;
+    --padding-small: 24px;
+    --padding-large: 48px;
 }
 
 section {
@@ -24,8 +28,8 @@ section {
 }
 
 .block {
-    padding: 24px;
+    padding: var(--padding-small);
     @media (min-width: 768px) {
-        padding: 48px;
+        padding: var(--padding-large);
     }
 }
